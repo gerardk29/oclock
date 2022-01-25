@@ -59,7 +59,7 @@ $(function() {
       
       // Display the game over message (after a certain duration)
       addEventListener('load', function() {
-        createProgressbar('progressbar', '120s', function() {
+        createProgressbar('progressbar', '1200s', function() {
           alert('Vous avez perduuuu ! Mais recrutez-moi quand même ;)');
         //   window.location.reload();
         window.location.replace('./game.php');

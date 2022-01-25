@@ -32,7 +32,7 @@ class GameManager {
             'temps' => $_SESSION['temps'],
             'name'  => $_SESSION['name']
         ]);
-        // DEBUG
-        echo $this->pdo->lastInsertId();
+    
+        $_SESSION['lastGameId'] = $this->pdo->lastInsertId();
     }
 }

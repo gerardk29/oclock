@@ -14,7 +14,8 @@ $repository = new GameRepository();
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Jeu de mémoire</h1>
+    <h1>Jeu de memory</h1>
+	<h2>Vous avez 2 min !...</h2>
 	<div class="parent">
 		<table>
 			<thead>
@@ -27,9 +28,7 @@ $repository = new GameRepository();
 		// We test if we are in success mode (i.e. the gamer win)
 		// If yes, the function will save the game in database
 		$game->isSuccessMode();	
-        if (isset($_POST['name'])) {
-            $_SESSION['name'] = $_POST['name'];
-        }
+
 		// Display the 5 best scores from GameRepository
         if (isset($_SESSION['data'])) {
             foreach ($_SESSION['data'] as $row) {
@@ -70,6 +69,16 @@ $repository = new GameRepository();
 		</form>
 	</div>
 	<div id='progressbar'></div>
+	<?php
+		 if (isset($_SESSION['name']) && isset($_SESSION['lastGameId'])) { ?>
+				<div class="success_message">
+					<?php echo 'Bien joué ' . $_SESSION['name'] . ',vous avez réussi le mémory en ' . $_SESSION['temps'] . '!!!' .'<br/>';?>
+					<?php echo "C'est reparti !";?>
+				</div>
+				<?php
+				unset($_SESSION['lastGameId']);
+			}
+		?>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="assets/js/script.js"></script>
 </body>
