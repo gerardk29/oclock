@@ -63,7 +63,7 @@ $(function() {
       // Display the game over message (after a certain duration)
       addEventListener('load', function() {
         createProgressbar('progressbar', '120s', function() {
-          alert('Vous avez perduuuu ! Mais recrutez-moi quand même ;)');
+          alert('Vous avez perduuuu ! Mais recrutez-moi quand même ;) \n\nNouvelle partie ?');
         //   window.location.reload();
         window.location.replace('./game.php');
         });
@@ -108,7 +108,7 @@ $(function() {
                                 // Set a flag win=true in the cookie for pass it in the index.php
                                 // In this way, we know that we'll have to persist the data
                                 document.cookie = "win=true";
-                                alert('Vous avez gagnéééééé ! Alors, recrutez-moi :)');                                
+                                alert('Vous avez gagnéééééé ! Alors, recrutez-moi :)\n\n Nouvelle partie ?');                                
                                 // window.location.reload();
                                 window.location.replace('./game.php');
                             }

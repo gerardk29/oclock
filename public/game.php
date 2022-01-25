@@ -86,5 +86,4 @@ include_once('header.html'); ?>
 	<!-- Better to include these in the end of the file just in case of JS bug -->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="assets/js/script.js"></script>
-</body>
-</html>
+<?php include_once('footer.html'); ?>

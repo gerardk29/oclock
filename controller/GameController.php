@@ -5,7 +5,7 @@ session_start();
 
 class GameController
 {
-	// Parameters of the game
+	// Game parameters
 	const NUMBER_OF_ROWS = 4;
 	const NUMBER_OF_COLUMNS = 7;
 	const NUMBER_OF_CARDS = (self::NUMBER_OF_ROWS * self::NUMBER_OF_COLUMNS) / 2;
@@ -180,11 +180,13 @@ class GameController
 	public function __construct()
 	{
 		try {
+			// Set parameters with constant class
 			$this->setNumberOfCards(self::NUMBER_OF_CARDS);
 			$this->setNumberOfRows(self::NUMBER_OF_ROWS);
 			$this->setNumberOfColumns(self::NUMBER_OF_COLUMNS);
 			$this->setRemainingCards($this->getNumberOfCards());
 			$board = [];
+			// Build the board in terms of game parameters
 			for ($i = 0; $i < $this->getNumberOfCards() ; $i++) {
 				$card = $this->getCardInstance($i);
 				$board[$i] = $card;
@@ -192,6 +194,7 @@ class GameController
 			}
 			$this->setBoard($board);
 			$this->setAttempt(0);
+			// Function to set the board randomly
 			shuffle($this->board);
 			$_SESSION['game'] = $this;
 		} catch (Exception $e) {
@@ -200,11 +203,11 @@ class GameController
 	}
 
 	/**
-	 * Unfolds a card according to a given index
+	 * Discover a card according to a given index
 	 * @param $index
 	 * @return array
 	 */
-	public function uncoverCard($index)
+	public function discoverCard($index)
 	{
 		$response = [];
 		$board = $this->getBoard();
@@ -243,7 +246,7 @@ class GameController
 	}
 
 	/**
-	 * Checks if two unfolded cards match
+	 * Checks if two discover cards matched
 	 * @return bool
 	 */
 	private function isMatch()

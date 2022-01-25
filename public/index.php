@@ -43,5 +43,5 @@ include_once('header.html'); ?>
 			<input type="text" name="name" id="name" placeholder="Renseignez votre nom" required/>
 			<button type="submit">JOUER !</button>
 		</form>
-</body>
-</html>
+	</div>
+<?php include_once('footer.html'); ?>

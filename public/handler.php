@@ -27,5 +27,5 @@ if (!isset($_GET['index'])) {
 	exit();
 }
 
-$result = $handler->game->uncoverCard($_GET['index']);
+$result = $handler->game->discoverCard($_GET['index']);
 echo json_encode($result);
