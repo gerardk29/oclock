@@ -1,0 +1,11 @@
+{
+  "name": "jeu-memory",
+  "version": "1.0.0",
+  "description": "test technique O'Clock",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed"
+  },
+  "author": "GK",
+  "license": "ISC"
+}
