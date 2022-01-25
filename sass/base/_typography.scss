@@ -11,7 +11,7 @@ body {
         font-size: 1rem;
     }
 }
-h1 {
+nav, h1, a {
     text-align: center;
     background-color: $title-color;
     font-weight: 700;
@@ -21,6 +21,14 @@ h1 {
     @media (max-width: 1535px) {
         font-size: 1.5rem;
     }
+}
+h1 {
+    margin-left: 34%;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 1%;
 }
 button {
     color: $button-color;

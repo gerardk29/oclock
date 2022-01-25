@@ -1,16 +1,13 @@
 <?php
+// We include this class for call some usefull methods
 require_once('../controller/GameController.php');
 
 $game = new GameController();
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Memory Game</title>
-	<link href="css/style.css" rel="stylesheet">
-</head>
-<body>
-    <h1>Jeu de mémoire</h1>
+
+// We include the similar lines of pages in header.html
+// and retrieve the content by this function
+include_once('header.html'); ?>
+
 	<div class="parent">
 		<table>
 			<thead>

@@ -1,6 +1,9 @@
+// Create two flags stores in cookies
+// Usefull for test the player context (if the player win, we'll save this game in the database)
 document.cookie = "temps=";
 document.cookie = "win=";
 
+// Set several variables necessary for chronometer functionnality
 var startTime = 0
 var start = 0
 var end = 0
@@ -59,7 +62,7 @@ $(function() {
       
       // Display the game over message (after a certain duration)
       addEventListener('load', function() {
-        createProgressbar('progressbar', '1200s', function() {
+        createProgressbar('progressbar', '120s', function() {
           alert('Vous avez perduuuu ! Mais recrutez-moi quand même ;)');
         //   window.location.reload();
         window.location.replace('./game.php');
