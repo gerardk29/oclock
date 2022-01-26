@@ -1,6 +1,8 @@
 <?php
+
 require_once('CardController.php');
 require_once('../model/GameManager.php');
+
 session_start();
 
 class GameController
@@ -8,6 +10,7 @@ class GameController
 	// Game parameters
 	const NUMBER_OF_ROWS = 4;
 	const NUMBER_OF_COLUMNS = 7;
+	// We calculate the number of cards dependent of the number of rows and columns
 	const NUMBER_OF_CARDS = (self::NUMBER_OF_ROWS * self::NUMBER_OF_COLUMNS) / 2;
 
 	private $board;
@@ -20,7 +23,7 @@ class GameController
 	private $currentIndex;
 
 	/**
-	 * Set the current of the card
+	 * Set the current index of the card
 	 * @param mixed $currentIndex
 	 */
 	public function setCurrentIndex($currentIndex)
@@ -29,7 +32,7 @@ class GameController
 	}
 
 	/**
-	 * Get the current index
+	 * Get the current index of the card
 	 * @return mixed
 	 */
 	public function getCurrentIndex()
@@ -38,7 +41,7 @@ class GameController
 	}
 
 	/**
-	 * Set the previous index
+	 * Set the previous index of the card
 	 * @param mixed $previousIndex
 	 */
 	public function setPreviousIndex($previousIndex)
@@ -47,7 +50,7 @@ class GameController
 	}
 
 	/**
-	 * Get the previous index
+	 * Get the previous index of the card
 	 * @return mixed
 	 */
 	public function getPreviousIndex()
@@ -164,7 +167,7 @@ class GameController
 	}
 
 	/**
-	 * Get a Card
+	 * Get a card
 	 * @param $index
 	 * @return Card
 	 */
@@ -179,6 +182,7 @@ class GameController
 	 */
 	public function __construct()
 	{
+		// We use a try / catch in order to catch the potential error
 		try {
 			// Set parameters with constant class
 			$this->setNumberOfCards(self::NUMBER_OF_CARDS);
@@ -261,6 +265,7 @@ class GameController
 
 	/**
 	 * Check if the gamer win the game
+	 * @return void
 	 */
 	public function isSuccessMode()
 	{

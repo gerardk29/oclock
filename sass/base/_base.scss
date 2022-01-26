@@ -3,6 +3,7 @@ nav {
 }
 div.parent {
     display: flex;
+    /* We use 4 breakpoints defined in _variables.scss */
     @media (max-width: $breakpoint-xs) {
         flex-direction: column;
     }
@@ -15,6 +16,7 @@ div.card {
     margin-right: 15px;
     margin-top: 15px;
     border-radius: 4px;
+    cursor: pointer;
     @media (max-width: $breakpoint-l) {
         width: 60px;
         height: 60px;
@@ -44,6 +46,7 @@ div.blank {
         line-height: 40px;
     }
 }
+/* Add the label O'clock when the cards are well find */
 div.blank:before {
     content: "O'clock";
   }
@@ -110,6 +113,7 @@ form input[name='chrono'] {
     button {
         height: 55px;
         border: 1px solid $button-color;
+        cursor: pointer;
     }
 }
 .progressbar {
@@ -118,6 +122,7 @@ form input[name='chrono'] {
   border: solid 1px #000;
   margin: 5% 0 0 20%;
 }
+/* Progress bar animation */
 .progressbar .inner {
   height: 15px;
   animation: progressbar-countdown;
@@ -132,6 +137,7 @@ form input[name='chrono'] {
   /* We want a linear animation, ease-out is standard */
   animation-timing-function: linear;
 }
+/* Progress bar colors */
 @keyframes progressbar-countdown {
   0% {
     width: 100%;
@@ -146,7 +152,7 @@ div.success_message {
     margin-top: 5%;
     text-align: center;
 }
-.baby_yoda {
+.image_geek {
     position: absolute;
     bottom: 2%;
     right: 1%;

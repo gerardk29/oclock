@@ -1,5 +1,5 @@
 <?php
-// We include the necessary classes for call some usefull methods
+// We include this class to call usefull methods we will find below
 require_once('../controller/GameController.php');
 require_once('../model/ConnectModel.php');
 require_once('../model/GameRepository.php');
@@ -31,8 +31,9 @@ include_once('header.html'); ?>
             $_SESSION['name'] = $_POST['name'];
         }
 
-		// Display the 5 best scores from GameRepository
+		// Display the top 5 scores from SESSION (GameRepository did the job)
         if (isset($_SESSION['data'])) {
+			// We loop on the SESSION array to display the name and time of top 5 scores
             foreach ($_SESSION['data'] as $row) {
                 ?>
                 <tr>
@@ -54,8 +55,10 @@ include_once('header.html'); ?>
 
 				$k = 0;
 				// Build the game matrix (dependent of the number of rows and columns)
+				// Loop on the row and build a parent div
 				for ($i = 0; $i < $rows; $i++) {
 					echo '<div class="row">';
+					// For each row, build the columns  in several child div
 					for ($j = 0; $j < $columns; $j++) {
 			?>
 					<div class="card" data-index="<?php echo $k ?>"></div>
@@ -66,6 +69,7 @@ include_once('header.html'); ?>
 				}
 			?>
 		</div>
+		<!-- Add a chronometer (2 minutes time, set in script.js) -->
 		<form action="" method="POST">
 			<input type="text" name="chrono" id="chrono" value="00:00" size="8"/>
 		</form>
@@ -73,12 +77,15 @@ include_once('header.html'); ?>
 	<div id='progressbar'></div>
 	<?php
 
+		// If the session contain values for the keys name and lastGameId, it means that the player win
+		// So we can display a success message
 		if (isset($_SESSION['name']) && isset($_SESSION['lastGameId'])) { ?>
 				<div class="success_message">
 					<?php echo 'Bien joué ' . $_SESSION['name'] . ',vous avez réussi le mémory en ' . $_SESSION['temps'] . '!!!' .'<br/>';?>
 					<?php echo "C'est reparti !";?>
 				</div>
 				<?php
+				// We unset the lastGameId in order to initialize the next game (for the same player)
 				unset($_SESSION['lastGameId']);
 			}
 		?>

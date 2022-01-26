@@ -22,6 +22,10 @@ class Card
 		return $this->image;
 	}
 
+	/**
+	 * Set the board images
+	 * Check if each image index is valid
+	 */
 	public function __construct($index)
 	{
 		$cardImages = [
@@ -30,9 +34,11 @@ class Card
 			'9.jpg', '10.jpg', '11.jpg', '12.jpg',
             '13.jpg', '14.jpg'
 		];
+		// If the index does not exists, throw an error
 		if (!isset($cardImages[$index])) {
 			throw new Exception( $index . " n'est pas une carte valide");
 		}
+		// Set images
 		$this->setImage($cardImages[$index]);
 	}
 }

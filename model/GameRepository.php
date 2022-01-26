@@ -1,5 +1,5 @@
 <?php
-
+// We include this class to call usefull methods we will find below
 require_once('../model/ConnectModel.php');
 
 class GameRepository {
@@ -9,10 +9,10 @@ class GameRepository {
     */
     public function __construct()
     {
-        // Create a new model instance for connect to the database
+        // Create a new model instance to connect to the database
         $connect = new ConnectModel();
         $pdo = $connect->bdConnect();
-        // Retrieve the 5 best scores from the table game, ordered by the time
+        // Retrieve the top 5 scores from the table game by SELECT, ordered by the time (ascendant) and limited to top 5
         // We store the result (array) in the session
         $_SESSION['data'] = $pdo->query('SELECT * FROM game ORDER BY temps LIMIT 5')->fetchAll();
     }
