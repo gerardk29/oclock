@@ -2,6 +2,9 @@
 // We include this class to call usefull methods we will find below
 require_once('../model/ConnectModel.php');
 
+/**
+ * Save the successfull games in database and in session
+ */
 class GameManager {
 
     /**
@@ -16,11 +19,13 @@ class GameManager {
     {
         // Create a new model instance to connect to the database
         $connect = new ConnectModel();
+        // Call the bdConnect() method
         $this->pdo = $connect->bdConnect();
     }
 
     /**
      * Retrieve the time of the game and save it in the database
+     * @return void
      */
     public function saveGame()
     {
@@ -37,7 +42,7 @@ class GameManager {
             'temps' => $_SESSION['temps'],
             'name'  => $_SESSION['name']
         ]);
-        // We store the last game id inserted in the SESSION to use it after in the page game.php
+        // We store the last game id inserted in the session to use it after in the page game.php
         // (the success message will display if the session contains values for the keys name and lastGameId)
         $_SESSION['lastGameId'] = $this->pdo->lastInsertId();
     }

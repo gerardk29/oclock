@@ -1,9 +1,9 @@
-// Create two flags stores in cookies
-// Usefull to test the player context (if the player win, we'll save this game in the database)
+// Create two flags stored in cookies
+// Usefull to test the player context (if these cookies are set later, it means that the player wins ; so, we'll save this game in the database)
 document.cookie = "temps=";
 document.cookie = "win=";
 
-// Set several variables necessary for chronometer functionnality
+// Set several variables necessary for the chronometer functionnality
 var start = 0
 var end = 0
 var diff = 0
@@ -62,8 +62,9 @@ $(function() {
         progressbarinner.style.animationPlayState = 'running';
       }
       
-      // Display the game over message (after a certain duration, 120 seconds in this case)
+      // Display a game over message (after 120 seconds)
       addEventListener('load', function() {
+          // We create the progressbar with the id "progressbar", the duration of 120s and the callback function which display an alert message
         createProgressbar('progressbar', '120s', function() {
           alert('Vous avez perduuuu ! :( \n\nNouvelle partie ?');
           // We refresh the page to start a new game
@@ -73,25 +74,30 @@ $(function() {
 
     // Manage event on card click  
     $("div.card").click(function() {
-        // If the card clicked has a children, we exit the function
+        // If the clicked card has a child, we exit the function
         if ($(this).children().length > 0) {
             return;
         }
-        // If there is 2 images or if the card cliked has the class 'blank', we exit the function
+        // If there are 2 images or if the cliked card has the class 'blank', we exit the function
         if ($("div.card img").length == 2 || $(this).hasClass('blank')) {
             return;
         }
 
-        // We store the index number (retrieve by the attribute 'data-index') in the variable data
+        // We store the index number (retrieved by the attribute 'data-index') in the variable data
         var data = {index: $(this).attr("data-index")};
 
-        // We use AJAX in order to update the game page in real time (without refresh the page)
+        // We define an AJAX request
+        // We use AJAX in order to update the game's page in real time (without reloading the page)
+        // By default, the request is a GET
         $.ajax(
             {
+                // Address where we send the request
                 url:'../public/handler.php',
+                // The data which will be sent
                 data: data,
+                // If the request succeeds, this function will be called
                 success: function(result) {
-                    // If an error occur, we exit the function
+                    // If an error occurs, we exit the function
                     if (result == undefined || result.error == 1) {
                         return;
                     }
@@ -105,19 +111,20 @@ $(function() {
                         img.appendTo($("div.card[data-index='"+ data.index +"']"));
                     }
 
-                    // Manage the case where the player find a pair
+                    // Manage the case where the player finds a pair
                     if (result.isMatch == true) {
                         setTimeout(function() {
-                            // Remove the class card and ad the class blank to the div parent of the image
+                            // Remove the class card and add the class blank to the div parent of the image
                             $("div.card img").parent().toggleClass('card blank');
                             // Remove the image
                             $("div.blank img").remove();
-                            // If there are not remaining cards, the player win (display an alert message)
+                            // If there are not remaining cards, the player wins (display an alert message)
                             if (result.remainingCards == 0) {
                                 // Set a flag win=true in the cookie to pass it in the index.php
                                 // In this way, we know that we'll have to persist the data
                                 document.cookie = "win=true";
-                                alert('Vous avez gagnéééééé ! :)\n\n Nouvelle partie ?');                                
+                                alert('Vous avez gagnéééééé ! :)\n\n Nouvelle partie ?');
+                                // We refresh the page to start a new game                                
                                 window.location.replace('./game.php');
                             }
                         }, 1000);

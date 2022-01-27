@@ -17,7 +17,7 @@ include_once('header.html'); ?>
 			</thead>
 			<tbody>
 		<?php 
-		// We test if we are in the "success mode" (i.e. the player win)
+		// We test if we are in the "success mode" (i.e. the player wins)
 		// If yes, the function will save the game in database
 		$game->isSuccessMode();
 
@@ -25,9 +25,9 @@ include_once('header.html'); ?>
         if (isset($_POST['name'])) {
             $_SESSION['name'] = $_POST['name'];
         }
-		// We display the top 5 scores from SESSION (GameRepository did the job)
+		// We display the top 5 scores from session (GameRepository did the job)
         if (isset($_SESSION['data'])) {
-			// We loop on the SESSION array to display the name and time of the top 5 scores
+			// We loop on the session array to display the name and time of the top 5 scores
             foreach ($_SESSION['data'] as $row) {
                 ?>
                 <tr>
@@ -47,6 +47,6 @@ include_once('header.html'); ?>
 		</form>
 	</div>
 
-<?php // We factorize in header.html the similar lines of index.php and game.php 
+<?php // We factorize in footer.html the similar lines of index.php and game.php 
 // and retrieve the content by this function	
 include_once('footer.html'); ?>

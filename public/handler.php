@@ -27,6 +27,7 @@ $handler = new Handler();
 if (!isset($_GET['index'])) {
 	$handler->error = 1;
 	$handler->message = 'carte non valide';
+	// We display the encoded JSON
 	echo json_encode($response);
 	exit();
 }
