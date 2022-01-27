@@ -27,12 +27,12 @@ La page game.php affiche :
 - à la fin du jeu, une nouvelle partie est automatiquement proposée
 
 Controlleurs :
-CardController : prépare les images du tableau de jeu
-GameController : gère la logique du jeu (initialise les paramètres de jeu, définit les getteurs et setteurs, l'algorithme principal du jeu)
+- CardController : prépare les images du tableau de jeu
+- GameController : gère la logique du jeu (initialise les paramètres de jeu, définit les getteurs et setteurs, l'algorithme principal du jeu)
 
 Modèles :
-ConnectModel : fait la connexion à la base de données
-GameManager : fait la sauvegarde des parties gagnées en base de données et en session
-GameRepository : requête la base de données pour l'affichage des meilleurs scores et les stocke en session
+- ConnectModel : fait la connexion à la base de données
+- GameManager : fait la sauvegarde des parties gagnées en base de données et en session
+- GameRepository : requête la base de données pour l'affichage des meilleurs scores et les stocke en session
 
 NB : bien que ce projet soit à but pédagogique, les commentaires du code sont tous en anglais afin de plonger les apprenants dans le futur monde professionnel.
